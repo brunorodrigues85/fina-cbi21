@@ -237,6 +237,25 @@
     padding: 4px 10px;
     white-space: nowrap;
   }
+  .score-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .score.done {
+    font-size: 18px;
+    color: var(--ink);
+    background: var(--sand);
+    border-color: var(--ball-orange);
+    padding: 4px 14px;
+  }
+  .sets {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
   .local {
     margin-top: 10px;
     font-size: 12px;
@@ -314,7 +333,7 @@ const DAYS = [
     date: "23/set (dia 1)",
     phase: "Fase classificatória — cruzada Grupo A x Grupo B",
     games: [
-      {n:1, hora:"11:30", a:"SESI BAURU", b:"SADA"},
+      {n:1, hora:"11:30", a:"SESI BAURU", b:"SADA", result:"1x3", sets:["16x25","25x21","19x25","22x25"]},
       {n:2, hora:"13:30", a:"MINAS T. C.", b:"PRAIA CLUBE"},
       {n:3, hora:"15:30", a:"VÔLEI RENATA", b:"GRAJAÚ C. C."}
     ]
@@ -376,7 +395,9 @@ DAYS.forEach(day => {
       </div>
       <div class="matchup">
         ${teamHTML(g.a, "")}
-        <span class="score">A REALIZAR</span>
+        ${g.result
+          ? `<div class="score-block"><span class="score done">${g.result}</span>${g.sets ? `<span class="sets">${g.sets.join(' · ')}</span>` : ''}</div>`
+          : `<span class="score">A REALIZAR</span>`}
         ${teamHTML(g.b, "right")}
       </div>
       <div class="local">Local: Taquaral</div>
