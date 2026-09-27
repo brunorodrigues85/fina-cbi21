@@ -271,6 +271,148 @@
     border-top: 1px solid var(--line);
     line-height: 1.6;
   }
+
+  /* ── PÓDIO ─────────────────────────────── */
+  .section-encerrado {
+    max-width: 760px;
+    margin: 50px auto 0;
+    padding: 0 18px;
+  }
+  .encerrado-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: clamp(22px, 5vw, 32px);
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .encerrado-sub {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .podium-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .podium-item {
+    flex: 1;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .podium-logo {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    padding: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  }
+  .podium-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .podium-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .podium-medal { font-size: 28px; line-height: 1; }
+  .podium-block {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: #fff;
+  }
+  .podium-block.gold   { height: 90px; background: linear-gradient(160deg,#C9A227,#F0D060); border: 2px solid #C9A227; }
+  .podium-block.silver { height: 65px; background: linear-gradient(160deg,#7A8499,#B0BAD0); border: 2px solid #9AA3BC; }
+  .podium-block.bronze { height: 48px; background: linear-gradient(160deg,#8B5E3C,#CD9060); border: 2px solid #CD7F32; }
+
+  /* ── TABELA FINAL ───────────────────────── */
+  .standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .standings-table th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-align: left;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--line);
+    background: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .standings-table td {
+    padding: 10px 14px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  .standings-table tr:last-child td { border-bottom: none; }
+  .standings-table tr:hover td { background: var(--sand); }
+  .pos-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    width: 28px;
+    text-align: center;
+    display: inline-block;
+  }
+  .pos-badge.p1 { color: #C9A227; }
+  .pos-badge.p2 { color: #7A8499; }
+  .pos-badge.p3 { color: #CD7F32; }
+  .pos-badge.p4, .pos-badge.p5, .pos-badge.p6 { color: var(--ink-soft); }
+  .team-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+  .mini-logo {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: center;
+    padding: 2px;
+    overflow: hidden;
+    flex: none;
+  }
+  .mini-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .final-badge {
+    font-size: 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .fb-gold   { background: #FFF5D6; color: #8A6A00; border: 1px solid #C9A227; }
+  .fb-silver { background: #F0F2F8; color: #4A5068; border: 1px solid #9AA3BC; }
+  .fb-bronze { background: #FDF0E8; color: #7A4A20; border: 1px solid #CD7F32; }
+  .fb-plain  { background: var(--sand); color: var(--ink-soft); border: 1px solid var(--line); }
+
 </style>
 </head>
 <body>
@@ -370,7 +512,7 @@ const DAYS = [
     phase: "Disputa de 3º lugar e final",
     games: [
       {n:13, hora:"11:00", a:"MINAS T. C.", b:"SESI BAURU", result:"0x3", sets:["22x25","22x25","19x25"], tag:"Disputa de 3º lugar"},
-      {n:14, hora:"13:00", a:"VÔLEI RENATA", b:"SADA", tag:"Final"}
+      {n:14, hora:"13:00", a:"VÔLEI RENATA", b:"SADA", result:"0x3", sets:["16x25","23x25","25x27"], tag:"Final"}
     ]
   }
 ];
@@ -406,6 +548,67 @@ DAYS.forEach(day => {
   });
   root.appendChild(section);
 });
+
+
+// ── PÓDIO + CLASSIFICAÇÃO FINAL ──────────────────────────────
+const PODIUM = [
+  { pos: 2, key: "VÔLEI RENATA", medal: "🥈", block: "silver", label: "Vice-campeão" },
+  { pos: 1, key: "SADA",         medal: "🥇", block: "gold",   label: "Campeão" },
+  { pos: 3, key: "SESI BAURU",   medal: "🥉", block: "bronze", label: "3° lugar" },
+];
+const FINAL_STANDINGS = [
+  { pos: 1, key: "SADA",         label: "Campeão",    fb: "fb-gold"   },
+  { pos: 2, key: "VÔLEI RENATA", label: "Vice-campeão", fb: "fb-silver" },
+  { pos: 3, key: "SESI BAURU",   label: "3° lugar",   fb: "fb-bronze" },
+  { pos: 4, key: "MINAS T. C.",  label: "4° lugar",   fb: "fb-plain"  },
+  { pos: 5, key: "PRAIA CLUBE",  label: "5° lugar",   fb: "fb-plain"  },
+  { pos: 6, key: "GRAJAÚ C. C.", label: "6° lugar",   fb: "fb-plain"  },
+];
+const PC = ["p1","p2","p3","p4","p5","p6"];
+
+const encSection = document.createElement("div");
+encSection.className = "section-encerrado";
+
+encSection.innerHTML = `<h2 class="encerrado-title">🏆 Classificação Final</h2>
+<p class="encerrado-sub">CBI Sub-21 Masculino 2026 · Ginásio do Taquaral, Campinas/SP · 23–27 set</p>`;
+
+// pódio
+const pw = document.createElement("div");
+pw.className = "podium-wrap";
+PODIUM.forEach(p => {
+  const t = TEAM[p.key];
+  const el = document.createElement("div");
+  el.className = "podium-item";
+  el.innerHTML = `
+    <div class="podium-medal">${p.medal}</div>
+    <div class="podium-logo"><img src="${t.logo}" alt="${t.short}"></div>
+    <div class="podium-name">${t.short}</div>
+    <div class="podium-block ${p.block}">${p.pos}°</div>
+  `;
+  pw.appendChild(el);
+});
+encSection.appendChild(pw);
+
+// tabela
+const table = document.createElement("table");
+table.className = "standings-table";
+table.innerHTML = `<thead><tr><th>Pos</th><th>Clube</th><th>Resultado</th></tr></thead>`;
+const tbody = document.createElement("tbody");
+FINAL_STANDINGS.forEach(s => {
+  const t = TEAM[s.key];
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td><span class="pos-badge ${PC[s.pos-1]}">${s.pos}°</span></td>
+    <td><div class="team-cell"><div class="mini-logo"><img src="${t.logo}" alt="${t.short}"></div>${t.short}</div></td>
+    <td><span class="final-badge ${s.fb}">${s.label}</span></td>
+  `;
+  tbody.appendChild(tr);
+});
+table.appendChild(tbody);
+encSection.appendChild(table);
+
+document.querySelector("footer").before(encSection);
+
 </script>
 
 </body>
